@@ -3,7 +3,9 @@
  */
 
 import React, { Component } from "react";
-//import { ApolloProvider } from "react-apollo";
+// This import statement  causes "Object prototype may only be an Object or null: undefined"
+import { ApolloProvider } from "react-apollo";
+
 import { Root, Container, Text, StyleProvider, View } from "native-base";
 // import client from "/apollo-client/index";
 
