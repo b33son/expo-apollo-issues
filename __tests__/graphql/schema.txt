@@ -1,0 +1,89 @@
+# projectId: cjoxtwhv8dp2t0175dmgovk0h
+# version: 31
+
+type File @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  contentType: String!
+  secret: String! @isUnique
+  size: Int!
+  url: String! @isUnique
+}
+
+type User @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String
+  fullName: String
+  password: String
+  phone: String
+  email: String
+  facebookUrl: String
+  instagramUrl: String
+  twitterUrl: String
+  snapchatUrl: String
+  orgs: [Org!]! @relation(name: "UserOrgMember")
+  orgsAsAdmin: [Org!]! @relation(name: "UserOrgAdmin")
+  campaigns: [Campaign!]! @relation(name: "UserCampMember")
+  campaignsAsLead: [Campaign!]! @relation(name: "UserCampLead")
+  posts: [Post!]! @relation(name: "UserPost")
+}
+
+type Campaign @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String
+  startDateTime: DateTime
+  endDateTime: DateTime
+  leads: [User!]! @relation(name: "UserCampLead")
+  members: [User!]! @relation(name: "UserCampMember")
+  orgs: [Org!]! @relation(name: "OrgCampaign")
+  posts: [Post!]! @relation(name: "CampaignPost")
+}
+
+type Org @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String
+  admins: [User!]! @relation(name: "UserOrgAdmin")
+  members: [User!]! @relation(name: "UserOrgMember")
+  campaigns: [Campaign!]! @relation(name: "OrgCampaign")
+}
+
+type Post @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String
+  caption: String
+  owner: User @relation(name: "UserPost")
+  campaign: Campaign @relation(name: "CampaignPost")
+  medias: [Media!]! @relation(name: "PostMedia")
+  location: Location @relation(name: "PostLocation")
+}
+
+type Media @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String
+  post: Post @relation(name: "PostMedia")
+  contentType: String!
+  size: Int
+  url: String!
+}
+
+type Location @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String
+  long: String
+  lat: String
+  post: Post @relation(name: "PostLocation")
+}

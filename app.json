@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "squad",
+    "entryPoint": "./src/entry.js",
+    "description": "This project is really great.",
+    "slug": "squad",
+    "privacy": "public",
+    "sdkVersion": "31.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/Logo-FF.png",
+    "splash": {
+      "image": "./src/assets/Logo-FF.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}

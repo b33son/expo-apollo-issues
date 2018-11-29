@@ -1,0 +1,5 @@
+projects:
+  app:
+    extensions:
+      endpoints:
+        default: https://api.graph.cool/simple/v1/cjoxtwhv8dp2t0175dmgovk0h
